@@ -1,0 +1,53 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class camSwitcher : MonoBehaviour
+{
+    public GameObject cam1, cam3;
+    public GameObject cam2, cam4;
+
+    void Update()
+    {
+        if (Input.GetButtonDown("ourcam1"))
+        {
+            cam1.SetActive(true);
+            cam2.SetActive(false);
+            cam3.SetActive(false);
+            cam4.SetActive(false);
+         //   cam5.SetActive(false);
+        }
+        if (Input.GetButtonDown("ourcam2"))
+        {
+            cam1.SetActive(false);
+            cam2.SetActive(true);
+            cam3.SetActive(false);
+            cam4.SetActive(false);
+           // cam5.SetActive(false);
+        }
+        if (Input.GetButtonDown("ourcam3"))
+        {
+            cam1.SetActive(false);
+            cam2.SetActive(false);
+            cam3.SetActive(true);
+            cam4.SetActive(false);
+          //  cam5.SetActive(false);
+        }
+        if (Input.GetButtonDown("ourcam4"))
+        {
+            cam1.SetActive(false);
+            cam2.SetActive(false);
+            cam3.SetActive(false);
+            cam4.SetActive(true);
+          //  cam5.SetActive(false);
+        }/*
+        if (Input.GetButtonDown("ourcam5"))
+        {
+            cam1.SetActive(false);
+            cam2.SetActive(false);
+            cam3.SetActive(false);
+            cam4.SetActive(false);
+            cam5.SetActive(true);
+        }*/
+    }
+}
