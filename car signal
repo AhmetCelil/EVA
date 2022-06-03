@@ -1,0 +1,76 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+public class signal : MonoBehaviour
+{
+    public GameObject sagSignal, solSignal;
+    public Renderer[] light;
+    private float zaman;
+    private float zaman2;
+    private int control = 0;
+    private int control2 = 0;
+  //  bool sagDurum = true;d
+  //  bool solDurum = true;
+   // bool cosagDurum, cosolDurum;
+    void Start()
+    {
+        light = GameObject.Find("light").GetComponentsInChildren<Renderer>();
+    }
+    private void Update()
+    {
+        //sağ sinyal için 
+        //
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            control++;
+        }
+
+        if (control % 2 == 1)
+        {
+            zaman = zaman + Time.deltaTime * 2;
+
+            if ((int)zaman % 2 == 0)
+            {
+                sagSignal.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+            }
+            else if((int)zaman % 2 == 1)
+            {
+                sagSignal.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+            }
+        }
+        if (control % 2 == 0)
+        {
+            sagSignal.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+            zaman = 0;
+            control = 0;
+        }
+        // sol sinyal için
+        //
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            control2++;
+        }
+
+        if (control2 % 2 == 1)
+        {
+            zaman2 = zaman2 + Time.deltaTime * 2;
+
+            if ((int)zaman2 % 2 == 0)
+            {
+                solSignal.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+            }
+            else if ((int)zaman2 % 2 == 1)
+            {
+                solSignal.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+            }
+        }
+        if (control2 % 2 == 0)
+        {
+            solSignal.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+            zaman2 = 0;
+            control2 = 0;
+        }
+    }
+}
